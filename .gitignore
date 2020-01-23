@@ -1,0 +1,46 @@
+ 
+*.class
+
+### package Files ###
+*.jar
+*.war
+*.ear
+
+HELP.md
+target/
+!**/src/main/**
+!**/src/test/**
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea/
+.mvn/
+.idea/*
+.mvn/*
+mvnw
+mvnw.cmd
+*.iws
+*.iml
+*.ipr
+
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+
+### VS Code ###
+.vscode/
+*.DS_Store
+.DS_Store
