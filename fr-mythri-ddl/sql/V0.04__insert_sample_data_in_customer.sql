@@ -1,0 +1,10 @@
+INSERT INTO ojt.customer(customer_id, name) VALUES (1, 'Jan');
+INSERT INTO ojt.customer(customer_id, name) VALUES (2, 'Jim');
+INSERT INTO ojt.customer(customer_id, name) VALUES (3, 'Jill');
+INSERT INTO ojt.customer(customer_id, name) VALUES (4, 'Jerry');
+INSERT INTO ojt.customer(customer_id, name) VALUES (5, 'Jack');
+INSERT INTO ojt.customer(customer_id, name) VALUES (6, 'Jam');
+INSERT INTO ojt.customer(customer_id, name) VALUES (7, 'Jordan');
+INSERT INTO ojt.customer(customer_id, name) VALUES (8, 'Jin');
+INSERT INTO ojt.customer(customer_id, name) VALUES (9, 'Jax');
+INSERT INTO ojt.customer(customer_id, name) VALUES (10, 'Jinx');

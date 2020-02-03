@@ -1,0 +1,50 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.fr.ojt.batch.repository.OrderRepository">
+    <resultMap id="order" type="com.fr.ojt.batch.model.Order">
+        <id property="orderId" column="order_id"/>
+        <result property="name" column="name"/>
+        <result property="quantity" column="quantity"/>
+        <result property="unitPrice" column="unit_price"/>
+        <result property="subTotal" column="sub_total"/>
+        <result property="shippingFee" column="shipping_fee"/>
+        <result property="itemTotal" column="item_total"/>
+        <result property="grandTotal" column="grand_total"/>
+        <result property="dateTime" column="date_time"/>
+        <result property="clientId" column="client_id"/>
+        <result property="customerId" column="customer_id"/>
+    </resultMap>
+    <select id="getAll" resultMap="order">
+        SELECT *
+        FROM ojt.order;
+    </select>
+
+    <select id="getOrderById" parameterType="Long" resultMap="order">
+        SELECT *
+        FROM ojt.order
+        WHERE order_id = #{orderId};
+    </select>
+
+    <select id="getOrderByCustomerId" resultMap="order" parameterType="Long">
+        SELECT *
+        FROM ojt.order
+        WHERE customer_id = #{customerId}
+    </select>
+
+    <insert id="addOrder">
+        INSERT INTO ojt.order(name, quantity, unit_price, sub_total, shipping_fee, item_total, grand_total, order_id,
+                              date_time,
+                              client_id, customer_id)
+        VALUES (#{name}, #{quantity}, #{unitPrice}, #{subTotal}, #{shippingFee}, #{itemTotal}, #{grandTotal},
+                #{orderId},
+                current_timestamp, #{clientId}, #{customerId})
+    </insert>
+
+    <delete id="deleteOrder">
+        DELETE
+        FROM ojt.order
+        WHERE order_id = #{orderId}
+    </delete>
+</mapper>
