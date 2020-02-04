@@ -1,5 +1,6 @@
 package com.fr.ojt.batch.model;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.Serializable;
@@ -7,6 +8,7 @@ import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 
 @Data
+@NoArgsConstructor
 public class Order implements Serializable {
     private static final long serialVersionUID = -4908977156333631639L;
 

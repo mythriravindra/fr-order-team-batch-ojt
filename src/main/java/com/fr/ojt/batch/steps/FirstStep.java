@@ -2,16 +2,17 @@ package com.fr.ojt.batch.steps;
 
 import com.fr.ojt.batch.listener.ChunkListener;
 import com.fr.ojt.batch.listener.StepListener;
-import com.fr.ojt.batch.reader.DbReader;
 import com.fr.ojt.batch.processor.TotalQuantityProcessor;
+import com.fr.ojt.batch.reader.CursorReader;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
 import org.springframework.batch.item.ItemWriter;
+import org.springframework.batch.item.database.JdbcCursorItemReader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import static java.lang.Integer.*;
+import static java.lang.Integer.parseInt;
 
 @Configuration
 public class FirstStep {
@@ -20,17 +21,22 @@ public class FirstStep {
 
     private static int totalQuantity;
 
-    @Bean
+ /*   @Bean
     public DbReader dbReader() {
         return new DbReader();
+    }*/
+
+    @Bean
+    public JdbcCursorItemReader cursorReader(){
+        return new CursorReader().read();
     }
 
     @Bean
     public ItemWriter writer() {
         return quantity -> {
             totalQuantity = parseInt(quantity
-                    .get(1)
-                    .toString());
+                    .get(quantity.size()-1)
+                    .toString()) - totalQuantity;
             System.out.println("total quantity of this chunk : " + totalQuantity);
         };
     }
@@ -42,11 +48,11 @@ public class FirstStep {
 
     @Bean
     public Step build() {
-        return stepBuilderFactory.get("step1").<String, String>chunk(2)
+        return stepBuilderFactory.get("step1").<String, String>chunk(11)
                 .faultTolerant()
                 .listener(new ChunkListener())
                 .listener(new StepListener())
-                .reader(dbReader())
+                .reader(cursorReader())
                 .processor(processor())
                 .writer(writer())
                 .build();
