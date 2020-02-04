@@ -1,4 +1,5 @@
 package com.fr.ojt.batch.model;
+
 import lombok.Data;
 import org.jetbrains.annotations.NotNull;
 

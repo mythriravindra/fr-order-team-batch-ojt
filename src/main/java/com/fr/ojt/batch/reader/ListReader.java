@@ -18,10 +18,9 @@ public class ListReader implements ItemReader<String> {
 
     @Override
     public String read() throws Exception, UnexpectedInputException, ParseException, NonTransientResourceException {
-        if(data.hasNext()) {
+        if (data.hasNext()) {
             return data.next();
-        }
-        else {
+        } else {
             return null;
         }
     }

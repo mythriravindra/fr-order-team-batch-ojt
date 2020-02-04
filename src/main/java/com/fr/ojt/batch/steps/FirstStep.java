@@ -26,6 +26,11 @@ public class FirstStep {
     }
 
     @Bean
+    public TotalQuantityProcessor processor() {
+        return new TotalQuantityProcessor();
+    }
+
+    @Bean
     public ItemWriter writer() {
         return quantity -> {
             totalQuantity = parseInt(quantity
@@ -33,11 +38,6 @@ public class FirstStep {
                     .toString());
             System.out.println("total quantity of this chunk : " + totalQuantity);
         };
-    }
-
-    @Bean
-    public TotalQuantityProcessor processor() {
-        return new TotalQuantityProcessor();
     }
 
     @Bean
@@ -75,7 +75,7 @@ public class FirstStep {
     @Override
     public void execute(StepExecution stepExecution) throws JobInterruptedException {
        *//* this.stepExecution=stepExecution;
-     *//**//*ExecutionContext stepContext = stepExecution.getExecutionContext();
+ *//**//*ExecutionContext stepContext = stepExecution.getExecutionContext();
         stepContext.put("count", totalQuantity);*//**//*
         this.stepExecution
                 .getExecutionContext()
