@@ -1,4 +1,4 @@
-package com.fr.ojt.batch.itemReader;
+package com.fr.ojt.batch.reader;
 
 import org.springframework.batch.item.ItemReader;
 import org.springframework.batch.item.NonTransientResourceException;
